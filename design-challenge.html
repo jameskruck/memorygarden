@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Challenge - Memory Garden Lesson</title>
+    <meta name="description" content="Design your own memory garden to preserve cultural knowledge and bridge generations.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <nav class="bg-white shadow-sm py-4 sticky top-0 z-10" aria-label="Main Navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <a href="https://jameskruck.github.io/projects/" class="font-bold text-xl text-blue-600" aria-label="James Kruck, PhD Home Page">James Kruck, PhD</a>
+                </div>
+                <div class="hidden md:block" aria-label="Desktop Navigation">
+                    <div class="flex space-x-8">
+                        <a href="https://jameskruck.com" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                        <a href="https://jameskruck.github.io/projects/" class="text-gray-700 hover:text-blue-600 transition">Projects</a>
+                        <a href="memory-garden.html" class="text-green-600 font-medium" aria-current="page">Memory Garden</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 p-2" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, hidden by default -->
+        <div id="mobile-menu" class="mobile-menu" aria-label="Mobile Navigation">
+            <div class="flex flex-col space-y-3">
+                <a href="https://jameskruck.com" class="text-gray-700 hover:text-blue-600 transition py-2 px-3 rounded-md">Home</a>
+                <a href="https://jameskruck.github.io/projects/" class="text-gray-700 hover:text-blue-600 transition py-2 px-3 rounded-md">Projects</a>
+                <a href="memory-garden.html" class="text-gray-700 hover:text-blue-600 transition py-2 px-3 rounded-md">Memory Garden</a>
+                <a href="design-challenge.html" class="text-green-600 font-medium py-2 px-3 rounded-md bg-green-50">Design Challenge</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 id="hero-heading" class="text-3xl font-bold text-gray-900 mb-4">Your Design Challenge</h1>
+                <p class="text-xl text-gray-800 mb-6">
+                    Design a memory garden that preserves cultural knowledge and creates meaningful connections between generations.
+                </p>
+                <div class="flex flex-wrap gap-3" aria-label="Topic tags">
+                    <span class="tag tag-green">Design Process</span>
+                    <span class="tag tag-blue">Cultural Preservation</span>
+                    <span class="tag tag-purple">Creative Problem-Solving</span>
+                    <span class="tag tag-orange">Community Connection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Progress Steps -->
+        <div class="content-section">
+            <div class="progress-steps">
+                <div class="step completed">
+                    <span>1</span>
+                    <span class="step-label">Challenge</span>
+                </div>
+                <div class="step completed">
+                    <span>2</span>
+                    <span class="step-label">Explore</span>
+                </div>
+                <div class="step completed">
+                    <span>3</span>
+                    <span class="step-label">Design</span>
+                </div>
+                <div class="step active">
+                    <span>4</span>
+                    <span class="step-label">Reflect</span>
+                </div>
+                <div class="step">
+                    <span>5</span>
+                    <span class="step-label">Share</span>
+                </div>
+            </div>
+            
+            <h2 class="text-2xl font-bold mb-4">Design Brief: Memory Garden</h2>
+            
+            <div class="info-box info-box-green mb-6">
+                <p class="mb-4">Design a small memory garden concept that could help preserve a specific cultural tradition, skill, or story while creating meaningful connections between generations.</p>
+                <p class="font-medium">Your garden should intentionally use sensory elements (smell, touch, sight, sound) to trigger memories and facilitate the sharing of cultural knowledge.</p>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-3">Design Process</h3>
+                
+                <ol class="space-y-6">
+                    <li>
+                        <div class="flex">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">1</div>
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-semibold mb-2">Select a Tradition or Story</h4>
+                                <p class="mb-2">Think about a skill, story, or tradition that an elder in your family or community knows, but that might be forgotten if not intentionally preserved.</p>
+                                <textarea 
+                                    class="w-full border rounded p-3 mt-2" 
+                                    rows="3" 
+                                    placeholder="Describe the tradition or story you want to preserve..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div class="flex">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">2</div>
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-semibold mb-2">Identify Sensory Triggers</h4>
+                                <p class="mb-2">What sensory elements are associated with this tradition? How might they trigger memories and stories?</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-4 mt-3">
+                                    <div>
+                                        <label for="scent-elements" class="block text-sm font-medium text-gray-700 mb-1">Scent Elements:</label>
+                                        <textarea id="scent-elements" rows="2" class="w-full border rounded p-3" placeholder="What smells are associated with this tradition?"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="tactile-elements" class="block text-sm font-medium text-gray-700 mb-1">Tactile Elements:</label>
+                                        <textarea id="tactile-elements" rows="2" class="w-full border rounded p-3" placeholder="What textures or physical experiences are part of this tradition?"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="visual-elements" class="block text-sm font-medium text-gray-700 mb-1">Visual Elements:</label>
+                                        <textarea id="visual-elements" rows="2" class="w-full border rounded p-3" placeholder="What colors, shapes, or symbols are associated with this tradition?"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="sound-elements" class="block text-sm font-medium text-gray-700 mb-1">Sound Elements:</label>
+                                        <textarea id="sound-elements" rows="2" class="w-full border rounded p-3" placeholder="What sounds are part of this tradition?"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div class="flex">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">3</div>
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-semibold mb-2">Design Your Memory Garden</h4>
+                                <p class="mb-3">Create a concept design for your memory garden. You can use the blank space below to sketch your design or describe how the elements would be arranged.</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6 mb-4">
+                                    <div>
+                                        <h5 class="font-medium mb-2">Garden Elements</h5>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-plants" class="mr-2">
+                                                <label for="el-plants">Plants with cultural significance</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-seating" class="mr-2">
+                                                <label for="el-seating">Seating arrangements for conversation</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-symbols" class="mr-2">
+                                                <label for="el-symbols">Cultural symbols or artifacts</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-interactive" class="mr-2">
+                                                <label for="el-interactive">Interactive elements</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-pathways" class="mr-2">
+                                                <label for="el-pathways">Pathways or circulation patterns</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-shade" class="mr-2">
+                                                <label for="el-shade">Shade or shelter elements</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-water" class="mr-2">
+                                                <label for="el-water">Water features</label>
+                                            </div>
+                                            <div class="flex items-center">
+                                                <input type="checkbox" id="el-other" class="mr-2">
+                                                <label for="el-other">Other elements (describe below)</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <textarea 
+                                            class="w-full border rounded p-3 mt-3" 
+                                            rows="3"
+                                            placeholder="Describe any other elements you would include..."
+                                        ></textarea>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5 class="font-medium mb-2">Sketch Your Design</h5>
+                                        <div class="design-canvas">
+                                            <p class="text-gray-500 text-center mb-3">Use this space to sketch your design</p>
+                                            <p class="text-sm text-gray-400 text-center">You can use any drawing tool or simply describe your design in the space below</p>
+                                        </div>
+                                        
+                                        <textarea 
+                                            class="w-full border rounded p-3 mt-3" 
+                                            rows="6"
+                                            placeholder="Describe the layout and arrangement of your memory garden..."
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <div class="flex">
+                            <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">4</div>
+                            <div class="ml-4 flex-1">
+                                <h4 class="font-semibold mb-2">Explain How Your Design Facilitates Intergenerational Connection</h4>
+                                <p class="mb-2">How will your memory garden create opportunities for elders to share knowledge with younger generations? How will it preserve the specific tradition you've chosen?</p>
+                                
+                                <textarea 
+                                    class="w-full border rounded p-3 mt-2" 
+                                    rows="4"
+                                    placeholder="Explain how your design facilitates knowledge transfer between generations..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="bg-gray-50 p-5 rounded-lg border border-gray-200 mb-6">
+                <h3 class="font-semibold mb-3">Success Criteria Checklist</h3>
+                <p class="mb-3">Use this checklist to evaluate your memory garden design:</p>
+                
+                <ul class="success-criteria">
+                    <li>
+                        <input type="checkbox" id="criteria-1" class="mr-2">
+                        <label for="criteria-1">Does the garden design create natural opportunities for story-sharing?</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="criteria-2" class="mr-2">
+                        <label for="criteria-2">Does it incorporate elements specific to the tradition being preserved?</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="criteria-3" class="mr-2">
+                        <label for="criteria-3">Is it accessible and appealing to both younger and older generations?</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="criteria-4" class="mr-2">
+                        <label for="criteria-4">Does it engage multiple senses to trigger memories and facilitate teaching?</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="criteria-5" class="mr-2">
+                        <label for="criteria-5">Could it be feasibly created in your community?</label>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="flex justify-between mt-8">
+                <a href="understanding-memory-gardens.html" class="btn btn-secondary">
+                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back: Memory Gardens
+                </a>
+                <a href="reflection.html" class="btn btn-primary">
+                    Next: Reflection
+                    <svg class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-4">© 2025 James Kruck, PhD. All rights reserved.</p>
+            <p class="text-gray-400 text-sm">
+                Designed with a focus on accessibility and inclusive design principles.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button 
+        id="scrollToTopBtn" 
+        class="scroll-top-btn"
+        aria-label="Scroll to top"
+    >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuButton.addEventListener('click', () => {
+            const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
