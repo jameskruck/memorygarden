@@ -8,6 +8,137 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <style>
+        /* Styles for the garden design board */
+        .garden-board-container {
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .garden-design-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .garden-design-wrapper {
+            flex-direction: row;
+          }
+        }
+
+        .element-palette {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem;
+          background-color: #f9fafb;
+          border: 1px solid #e5e7eb;
+          border-radius: 0.5rem;
+          padding: 1rem;
+          height: fit-content;
+        }
+
+        @media (min-width: 768px) {
+          .element-palette {
+            width: 230px;
+          }
+        }
+
+        .garden-element {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: white;
+          border: 1px dashed #d1d5db;
+          border-radius: 0.375rem;
+          padding: 0.5rem;
+          cursor: grab;
+          transition: all 0.2s;
+        }
+
+        .garden-element:hover {
+          border-color: #3b82f6;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+        }
+
+        .element-svg {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 0.5rem;
+        }
+
+        .element-name {
+          font-size: 0.75rem;
+          text-align: center;
+          color: #4b5563;
+        }
+
+        .garden-design-board {
+          position: relative;
+          flex-grow: 1;
+          height: 500px;
+          background-color: #dcfce7;
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+          background-size: 20px 20px;
+          border: 2px solid #34d399;
+          border-radius: 0.5rem;
+          overflow: hidden;
+        }
+
+        .placed-element {
+          position: absolute;
+          z-index: 1;
+        }
+
+        .placed-element:hover {
+          z-index: 10;
+          filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .board-instructions {
+          font-size: 0.875rem;
+          color: #6b7280;
+          margin-bottom: 1rem;
+        }
+
+        .board-buttons {
+          display: flex;
+          gap: 0.5rem;
+          margin-top: 1rem;
+        }
+
+        .board-buttons button {
+          padding: 0.5rem 1rem;
+          border-radius: 0.375rem;
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .clear-garden {
+          background-color: #fee2e2;
+          color: #b91c1c;
+          border: 1px solid #fecaca;
+        }
+
+        .clear-garden:hover {
+          background-color: #fecaca;
+        }
+
+        .save-garden {
+          background-color: #e0f2fe;
+          color: #0284c7;
+          border: 1px solid #bae6fd;
+        }
+
+        .save-garden:hover {
+          background-color: #bae6fd;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
     <!-- Skip to content link for accessibility -->
@@ -52,6 +183,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
                 <h1 id="hero-heading" class="text-3xl font-bold text-gray-900 mb-4">Your Design Challenge</h1>
+                <p class="text-xl text-gray-800 mb-3">
+                    "Like the generations of leaves, the lives of mortals." — Nestor, from Homer's Iliad
+                </p>
                 <p class="text-xl text-gray-800 mb-6">
                     Design a memory garden that preserves cultural knowledge and creates meaningful connections between generations.
                 </p>
@@ -60,6 +194,7 @@
                     <span class="tag tag-blue">Cultural Preservation</span>
                     <span class="tag tag-purple">Creative Problem-Solving</span>
                     <span class="tag tag-orange">Community Connection</span>
+                    <span class="tag tag-pink">Classical Wisdom</span>
                 </div>
             </div>
         </div>
@@ -99,6 +234,17 @@
                 <p class="font-medium">Your garden should intentionally use sensory elements (smell, touch, sight, sound) to trigger memories and facilitate the sharing of cultural knowledge.</p>
             </div>
             
+            <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200 mb-6">
+                <h3 class="font-medium mb-2 text-yellow-800">An Example: My Grandfather's Memory Garden</h3>
+                <p class="mb-3">When I created my own memory garden design, I focused on my experiences with my grandfather on his farm. I included three key elements:</p>
+                <ul class="list-disc pl-6 mb-3">
+                    <li><strong>A small pond</strong> - Recalling the dugout on the farm where frogs lived and my cousin would try to catch them</li>
+                    <li><strong>Wheat and grain plantings</strong> - Representing the fields where my grandfather took me on tractor rides</li>
+                    <li><strong>Lilac bushes</strong> - Which grew abundantly in Manitoba and provide a distinctive sensory connection to that place</li>
+                </ul>
+                <p>These elements weren't chosen at random—each connects to specific memories and values my grandfather passed down to me, including his balance of frugality and generosity that I learned from our trips to the donut shop and his later financial support.</p>
+            </div>
+            
             <div class="mb-6">
                 <h3 class="text-xl font-semibold mb-3">Design Process</h3>
                 
@@ -108,7 +254,8 @@
                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">1</div>
                             <div class="ml-4 flex-1">
                                 <h4 class="font-semibold mb-2">Select a Tradition or Story</h4>
-                                <p class="mb-2">Think about a skill, story, or tradition that an elder in your family or community knows, but that might be forgotten if not intentionally preserved.</p>
+                                <p class="mb-2">Think about a skill, story, or tradition that an elder in your family or community knows, but that might be forgotten if not intentionally preserved. Like Nestor preserving tales of ancient heroes, what knowledge do you want to ensure survives?</p>
+                                <p class="text-sm text-gray-600 mb-2">This could be from family members, community elders, mentors, or other significant figures in your life.</p>
                                 <textarea 
                                     class="w-full border rounded p-3 mt-2" 
                                     rows="3" 
@@ -152,66 +299,42 @@
                             <div class="flex-shrink-0 h-8 w-8 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold">3</div>
                             <div class="ml-4 flex-1">
                                 <h4 class="font-semibold mb-2">Design Your Memory Garden</h4>
-                                <p class="mb-3">Create a concept design for your memory garden. You can use the blank space below to sketch your design or describe how the elements would be arranged.</p>
                                 
-                                <div class="grid md:grid-cols-2 gap-6 mb-4">
-                                    <div>
-                                        <h5 class="font-medium mb-2">Garden Elements</h5>
-                                        <div class="space-y-2">
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-plants" class="mr-2">
-                                                <label for="el-plants">Plants with cultural significance</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-seating" class="mr-2">
-                                                <label for="el-seating">Seating arrangements for conversation</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-symbols" class="mr-2">
-                                                <label for="el-symbols">Cultural symbols or artifacts</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-interactive" class="mr-2">
-                                                <label for="el-interactive">Interactive elements</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-pathways" class="mr-2">
-                                                <label for="el-pathways">Pathways or circulation patterns</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-shade" class="mr-2">
-                                                <label for="el-shade">Shade or shelter elements</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-water" class="mr-2">
-                                                <label for="el-water">Water features</label>
-                                            </div>
-                                            <div class="flex items-center">
-                                                <input type="checkbox" id="el-other" class="mr-2">
-                                                <label for="el-other">Other elements (describe below)</label>
-                                            </div>
-                                        </div>
-                                        
-                                        <textarea 
-                                            class="w-full border rounded p-3 mt-3" 
-                                            rows="3"
-                                            placeholder="Describe any other elements you would include..."
-                                        ></textarea>
+                                <!-- Interactive Garden Design Board -->
+                                <div class="garden-board-container">  
+                                  <div class="board-instructions">
+                                    <p class="mb-2"><strong>Instructions:</strong></p>
+                                    <ul class="list-disc pl-6 mb-4">
+                                      <li>Drag elements from the palette onto the garden board</li>
+                                      <li>Drag placed elements to rearrange them</li>
+                                      <li>Double-click an element to remove it</li>
+                                      <li>Your design will automatically save to your browser</li>
+                                    </ul>
+                                  </div>
+                                  
+                                  <div class="garden-design-wrapper">
+                                    <div class="element-palette" id="element-palette">
+                                      <!-- Elements will be added here by JavaScript -->
                                     </div>
                                     
-                                    <div>
-                                        <h5 class="font-medium mb-2">Sketch Your Design</h5>
-                                        <div class="design-canvas">
-                                            <p class="text-gray-500 text-center mb-3">Use this space to sketch your design</p>
-                                            <p class="text-sm text-gray-400 text-center">You can use any drawing tool or simply describe your design in the space below</p>
-                                        </div>
-                                        
-                                        <textarea 
-                                            class="w-full border rounded p-3 mt-3" 
-                                            rows="6"
-                                            placeholder="Describe the layout and arrangement of your memory garden..."
-                                        ></textarea>
+                                    <div class="garden-design-board" id="garden-design-board">
+                                      <!-- Garden elements will be placed here -->
                                     </div>
+                                  </div>
+                                  
+                                  <div class="board-buttons">
+                                    <button id="clear-garden" class="clear-garden">Clear Garden</button>
+                                    <button id="save-garden" class="save-garden">Save Design</button>
+                                  </div>
+                                  
+                                  <div class="mt-4">
+                                    <p class="text-sm text-gray-600">After designing your garden above, please describe its significance and the elements you chose below:</p>
+                                    <textarea 
+                                      class="w-full border rounded p-3 mt-2" 
+                                      rows="4"
+                                      placeholder="Explain the significance of each element in your memory garden design..."
+                                    ></textarea>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -223,6 +346,8 @@
                             <div class="ml-4 flex-1">
                                 <h4 class="font-semibold mb-2">Explain How Your Design Facilitates Intergenerational Connection</h4>
                                 <p class="mb-2">How will your memory garden create opportunities for elders to share knowledge with younger generations? How will it preserve the specific tradition you've chosen?</p>
+                                
+                                <p class="text-sm text-gray-600 mb-2">Consider how Nestor shared tales around campfires, or how my grandfather's farm became a setting for passing down values. How will your garden create similar moments of connection?</p>
                                 
                                 <textarea 
                                     class="w-full border rounded p-3 mt-2" 
@@ -260,7 +385,16 @@
                         <input type="checkbox" id="criteria-5" class="mr-2">
                         <label for="criteria-5">Could it be feasibly created in your community?</label>
                     </li>
+                    <li>
+                        <input type="checkbox" id="criteria-6" class="mr-2">
+                        <label for="criteria-6">Does it honor the cultural context from which the tradition emerges?</label>
+                    </li>
                 </ul>
+            </div>
+            
+            <div class="quotation mb-6">
+                <p>"Mightiest were these of men reared upon the earth... with those men could no one fight of the mortals now upon the earth." — Nestor, in Homer's Iliad</p>
+                <p class="text-sm text-gray-600 mt-2">Like Nestor preserving the memory of heroes past, your garden will preserve the wisdom and traditions that matter to you.</p>
             </div>
             
             <div class="flex justify-between mt-8">
@@ -302,6 +436,314 @@
     </button>
 
     <script>
+        // Garden elements with their SVG representations
+        const gardenElements = [
+          {
+            id: 'pond',
+            name: 'Pond',
+            svg: `<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="50" cy="30" rx="45" ry="25" fill="#a6cbe6" stroke="#5b99c8" stroke-width="2"/>
+                    <path d="M20,25 Q35,15 50,25 T80,25" fill="none" stroke="#5b99c8" stroke-width="1.5"/>
+                    <path d="M15,30 Q35,40 50,30 T85,30" fill="none" stroke="#5b99c8" stroke-width="1.5"/>
+                  </svg>`
+          },
+          {
+            id: 'grain',
+            name: 'Grain',
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(50, 95) scale(0.8)">
+                      <path d="M-5,-90 L-5,0" stroke="#b39257" stroke-width="2" fill="none"/>
+                      <path d="M0,-95 L0,0" stroke="#b39257" stroke-width="2" fill="none"/>
+                      <path d="M5,-90 L5,0" stroke="#b39257" stroke-width="2" fill="none"/>
+                      <path d="M-20,-75 C-15,-85 -5,-85 -5,-75" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                      <path d="M-15,-65 C-10,-75 0,-75 0,-65" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                      <path d="M-10,-55 C-5,-65 5,-65 5,-55" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                      <path d="M-5,-45 C0,-55 10,-55 10,-45" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                      <path d="M0,-35 C5,-45 15,-45 15,-35" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                      <path d="M5,-25 C10,-35 20,-35 20,-25" stroke="#e0c891" stroke-width="1.5" fill="none"/>
+                    </g>
+                  </svg>`
+          },
+          {
+            id: 'lilac',
+            name: 'Lilac Bush',
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M45,95 L55,95 L55,60 L45,60 Z" fill="#8a6343"/>
+                    <ellipse cx="35" cy="50" rx="20" ry="15" fill="#b887d8"/>
+                    <ellipse cx="50" cy="40" rx="20" ry="15" fill="#b887d8"/>
+                    <ellipse cx="65" cy="50" rx="20" ry="15" fill="#b887d8"/>
+                    <ellipse cx="50" cy="60" rx="18" ry="12" fill="#b887d8"/>
+                  </svg>`
+          },
+          {
+            id: 'tree',
+            name: 'Tree',
+            svg: `<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="45" y="60" width="10" height="50" fill="#7d5a4f"/>
+                    <ellipse cx="50" cy="45" rx="30" ry="35" fill="#4ca64c"/>
+                  </svg>`
+          },
+          {
+            id: 'bench',
+            name: 'Bench',
+            svg: `<svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="20" width="80" height="5" fill="#b3895f"/>
+                    <rect x="15" y="25" width="70" height="3" fill="#96744d"/>
+                    <rect x="20" y="28" width="5" height="15" fill="#8a6343"/>
+                    <rect x="75" y="28" width="5" height="15" fill="#8a6343"/>
+                  </svg>`
+          },
+          {
+            id: 'stones',
+            name: 'Stones',
+            svg: `<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="30" cy="30" rx="20" ry="15" fill="#bcbcbc" stroke="#929292" stroke-width="1"/>
+                    <ellipse cx="60" cy="35" rx="25" ry="18" fill="#a9a9a9" stroke="#878787" stroke-width="1"/>
+                    <ellipse cx="45" cy="20" rx="15" ry="12" fill="#d2d2d2" stroke="#b5b5b5" stroke-width="1"/>
+                  </svg>`
+          },
+          {
+            id: 'flowers',
+            name: 'Flowers',
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50,95 L50,60" stroke="#4a8a1f" stroke-width="2" fill="none"/>
+                    <circle cx="45" cy="55" r="8" fill="#ff6b6b"/>
+                    <circle cx="55" cy="50" r="8" fill="#ff6b6b"/>
+                    <circle cx="60" cy="60" r="8" fill="#ff6b6b"/>
+                    <circle cx="50" cy="45" r="8" fill="#ff6b6b"/>
+                    <circle cx="40" cy="45" r="8" fill="#ff6b6b"/>
+                    <circle cx="50" cy="60" r="5" fill="#ffeb3b"/>
+                  </svg>`
+          },
+          {
+            id: 'path',
+            name: 'Path',
+            svg: `<svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5,20 C25,10 75,30 95,20" stroke="#d2b48c" stroke-width="15" stroke-linecap="round" fill="none"/>
+                    <path d="M5,20 C25,10 75,30 95,20" stroke="#e6ccb3" stroke-width="12" stroke-linecap="round" fill="none" stroke-dasharray="3,3"/>
+                  </svg>`
+          },
+          {
+            id: 'fountain',
+            name: 'Fountain',
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="30" fill="#d9d9d9" stroke="#b5b5b5" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="20" fill="#a6cbe6" stroke="#5b99c8" stroke-width="1"/>
+                    <circle cx="50" cy="50" r="5" fill="#d9d9d9"/>
+                    <path d="M50,45 L50,30 M50,45 L40,30 M50,45 L60,30" stroke="#a6cbe6" stroke-width="2"/>
+                  </svg>`
+          },
+          {
+            id: 'arbor',
+            name: 'Garden Arbor',
+            svg: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20,90 L20,30 L80,30 L80,90" stroke="#8a6343" stroke-width="3" fill="none"/>
+                    <path d="M15,30 C15,20 85,20 85,30" stroke="#8a6343" stroke-width="3" fill="none"/>
+                    <path d="M20,30 C20,50 30,70 50,60 C70,70 80,50 80,30" stroke="#4ca64c" stroke-width="2" fill="none"/>
+                    <circle cx="35" cy="40" r="3" fill="#ff6b6b"/>
+                    <circle cx="60" cy="45" r="3" fill="#ff6b6b"/>
+                    <circle cx="45" cy="55" r="3" fill="#ff6b6b"/>
+                    <circle cx="70" cy="40" r="3" fill="#ff6b6b"/>
+                  </svg>`
+          }
+        ];
+
+        // Initialize the garden board when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+          initGardenBoard();
+        });
+
+        function initGardenBoard() {
+          const gardenBoard = document.getElementById('garden-design-board');
+          const elementPalette = document.getElementById('element-palette');
+          
+          if (!gardenBoard || !elementPalette) {
+            console.error('Garden board elements not found');
+            return;
+          }
+          
+          // Set up the element palette
+          gardenElements.forEach(element => {
+            const elementDiv = document.createElement('div');
+            elementDiv.className = 'garden-element';
+            elementDiv.dataset.elementId = element.id;
+            elementDiv.innerHTML = `
+              <div class="element-svg">${element.svg}</div>
+              <div class="element-name">${element.name}</div>
+            `;
+            elementPalette.appendChild(elementDiv);
+            
+            // Make elements draggable
+            elementDiv.draggable = true;
+            elementDiv.addEventListener('dragstart', handleDragStart);
+          });
+          
+          // Set up the garden board
+          gardenBoard.addEventListener('dragover', handleDragOver);
+          gardenBoard.addEventListener('drop', handleDrop);
+          
+          // Add clear board button functionality
+          const clearButton = document.getElementById('clear-garden');
+          if (clearButton) {
+            clearButton.addEventListener('click', () => {
+              if (confirm('Are you sure you want to clear your garden design?')) {
+                // Remove all elements except background
+                const elementsToRemove = gardenBoard.querySelectorAll('.placed-element');
+                elementsToRemove.forEach(el => el.remove());
+                
+                // Clear local storage for this board
+                localStorage.removeItem('memoryGardenDesign');
+              }
+            });
+          }
+          
+          // Add save functionality
+          const saveButton = document.getElementById('save-garden');
+          if (saveButton) {
+            saveButton.addEventListener('click', saveGardenDesign);
+          }
+          
+          // Load any saved design
+          loadGardenDesign();
+        }
+
+        function handleDragStart(e) {
+          const elementId = this.dataset.elementId;
+          e.dataTransfer.setData('text/plain', elementId);
+          e.dataTransfer.effectAllowed = 'copy';
+        }
+
+        function handleDragOver(e) {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'copy';
+        }
+
+        function handleDrop(e) {
+          e.preventDefault();
+          const elementId = e.dataTransfer.getData('text/plain');
+          
+          // Find the element data
+          const elementData = gardenElements.find(el => el.id === elementId);
+          if (!elementData) return;
+          
+          // Create a new element at the drop position
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const newElement = document.createElement('div');
+          newElement.className = 'placed-element';
+          newElement.dataset.elementId = elementId;
+          newElement.innerHTML = elementData.svg;
+          newElement.style.position = 'absolute';
+          newElement.style.left = `${x - 40}px`;
+          newElement.style.top = `${y - 40}px`;
+          newElement.style.width = '80px';
+          newElement.style.height = '80px';
+          newElement.style.cursor = 'move';
+          
+          e.currentTarget.appendChild(newElement);
+          
+          // Make the placed element draggable within the board
+          makeElementDraggable(newElement);
+          
+          // Save the current design
+          saveGardenDesign();
+        }
+
+        function makeElementDraggable(element) {
+          let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+          
+          element.onmousedown = dragMouseDown;
+          
+          function dragMouseDown(e) {
+            e.preventDefault();
+            // Get the mouse position at startup
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // Call a function whenever the cursor moves
+            document.onmousemove = elementDrag;
+          }
+          
+          function elementDrag(e) {
+            e.preventDefault();
+            // Calculate the new position
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // Set the element's new position
+            element.style.top = (element.offsetTop - pos2) + "px";
+            element.style.left = (element.offsetLeft - pos1) + "px";
+          }
+          
+          function closeDragElement() {
+            // Stop moving when mouse button is released
+            document.onmouseup = null;
+            document.onmousemove = null;
+            
+            // Save the current design
+            saveGardenDesign();
+          }
+          
+          // Add a double-click to remove
+          element.ondblclick = function() {
+            if (confirm('Remove this element?')) {
+              element.remove();
+              saveGardenDesign();
+            }
+          };
+        }
+
+        function saveGardenDesign() {
+          const gardenBoard = document.getElementById('garden-design-board');
+          const elements = gardenBoard.querySelectorAll('.placed-element');
+          
+          const design = Array.from(elements).map(el => {
+            return {
+              elementId: el.dataset.elementId,
+              left: el.style.left,
+              top: el.style.top
+            };
+          });
+          
+          localStorage.setItem('memoryGardenDesign', JSON.stringify(design));
+        }
+
+        function loadGardenDesign() {
+          const savedDesign = localStorage.getItem('memoryGardenDesign');
+          if (!savedDesign) return;
+          
+          try {
+            const design = JSON.parse(savedDesign);
+            const gardenBoard = document.getElementById('garden-design-board');
+            
+            design.forEach(item => {
+              const elementData = gardenElements.find(el => el.id === item.elementId);
+              if (!elementData) return;
+              
+              const newElement = document.createElement('div');
+              newElement.className = 'placed-element';
+              newElement.dataset.elementId = item.elementId;
+              newElement.innerHTML = elementData.svg;
+              newElement.style.position = 'absolute';
+              newElement.style.left = item.left;
+              newElement.style.top = item.top;
+              newElement.style.width = '80px';
+              newElement.style.height = '80px';
+              newElement.style.cursor = 'move';
+              
+              gardenBoard.appendChild(newElement);
+              
+              // Make the placed element draggable within the board
+              makeElementDraggable(newElement);
+            });
+          } catch (e) {
+            console.error('Error loading garden design:', e);
+          }
+        }
+
         // Mobile menu toggle
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -312,7 +754,7 @@
             mobileMenu.classList.toggle('open');
         });
         
-        // Scroll to top functionality
+// Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
         
         window.addEventListener('scroll', () => {
@@ -328,6 +770,32 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+        
+        // Auto-save form inputs to localStorage
+        const formInputs = document.querySelectorAll('textarea, input[type="checkbox"]');
+        
+        // Load saved form data
+        formInputs.forEach(input => {
+            const inputId = input.id || input.getAttribute('placeholder');
+            if (inputId) {
+                const savedValue = localStorage.getItem(`designChallenge_${inputId}`);
+                if (savedValue !== null) {
+                    if (input.type === 'checkbox') {
+                        input.checked = savedValue === 'true';
+                    } else {
+                        input.value = savedValue;
+                    }
+                }
+                
+                // Save on input
+                input.addEventListener(input.type === 'checkbox' ? 'change' : 'input', function() {
+                    localStorage.setItem(
+                        `designChallenge_${this.id || this.getAttribute('placeholder')}`, 
+                        this.type === 'checkbox' ? this.checked : this.value
+                    );
+                });
+            }
         });
     </script>
 </body>
