@@ -257,10 +257,11 @@
                                 <p class="mb-2">Think about a skill, story, or tradition that an elder in your family or community knows, but that might be forgotten if not intentionally preserved. Like Nestor preserving tales of ancient heroes, what knowledge do you want to ensure survives?</p>
                                 <p class="text-sm text-gray-600 mb-2">This could be from family members, community elders, mentors, or other significant figures in your life.</p>
                                 <textarea 
-                                    class="w-full border rounded p-3 mt-2" 
-                                    rows="3" 
-                                    placeholder="Describe the tradition or story you want to preserve..."
-                                ></textarea>
+    id="tradition-story"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Describe the tradition or story you want to preserve..."
+></textarea>
                             </div>
                         </div>
                     </li>
@@ -330,10 +331,11 @@
                                   <div class="mt-4">
                                     <p class="text-sm text-gray-600">After designing your garden above, please describe its significance and the elements you chose below:</p>
                                     <textarea 
-                                      class="w-full border rounded p-3 mt-2" 
-                                      rows="4"
-                                      placeholder="Explain the significance of each element in your memory garden design..."
-                                    ></textarea>
+    id="garden-significance"
+    class="w-full border rounded p-3 mt-2" 
+    rows="4"
+    placeholder="Explain the significance of each element in your memory garden design..."
+></textarea>
                                   </div>
                                 </div>
                             </div>
@@ -349,11 +351,12 @@
                                 
                                 <p class="text-sm text-gray-600 mb-2">Consider how Nestor shared tales around campfires, or how my grandfather's farm became a setting for passing down values. How will your garden create similar moments of connection?</p>
                                 
-                                <textarea 
-                                    class="w-full border rounded p-3 mt-2" 
-                                    rows="4"
-                                    placeholder="Explain how your design facilitates knowledge transfer between generations..."
-                                ></textarea>
+<textarea 
+    id="intergenerational-connection"
+    class="w-full border rounded p-3 mt-2" 
+    rows="4"
+    placeholder="Explain how your design facilitates knowledge transfer between generations..."
+></textarea>
                             </div>
                         </div>
                     </li>
@@ -798,5 +801,48 @@
             }
         });
     </script>
+    <script>
+    // Save textarea inputs to localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('textarea').forEach(textarea => {
+            // If the textarea doesn't have an ID, generate one
+            if (!textarea.id) {
+                const nearestLabel = textarea.closest('div').querySelector('label');
+                if (nearestLabel) {
+                    const labelFor = nearestLabel.getAttribute('for');
+                    if (labelFor) {
+                        textarea.id = labelFor;
+                    } else {
+                        // Create an ID based on label text
+                        const labelText = nearestLabel.textContent.trim().toLowerCase()
+                            .replace(/[^a-z0-9]/g, '-').substring(0, 30);
+                        textarea.id = 'memory_garden_' + labelText;
+                        nearestLabel.setAttribute('for', textarea.id);
+                    }
+                } else {
+                    // If no label found, generate a unique ID
+                    textarea.id = 'memory_garden_textarea_' + Math.random().toString(36).substring(2, 9);
+                }
+            }
+            
+            // Ensure ID has the prefix
+            if (!textarea.id.startsWith('memory_garden_')) {
+                textarea.id = 'memory_garden_' + textarea.id;
+            }
+            
+            // Set initial value from localStorage if it exists
+            const storageKey = textarea.id;
+            const savedValue = localStorage.getItem(storageKey);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+            
+            // Save value when it changes
+            textarea.addEventListener('input', function() {
+                localStorage.setItem(storageKey, this.value);
+            });
+        });
+    });
+</script>
 </body>
 </html>

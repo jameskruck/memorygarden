@@ -115,61 +115,67 @@
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Cultural Significance</h4>
                     <p class="mb-2">What makes the tradition you chose to preserve important to your cultural identity or community history? Why does it matter if this knowledge is lost? Like Nestor preserving tales of heroes past, what significant wisdom are you protecting?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+<textarea 
+    id="cultural-significance"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
                 
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Power of Physical Space</h4>
                     <p class="mb-2">How does your memory garden's physical design facilitate knowledge transfer in ways that might be different from other methods (like books, recordings, or digital archives)? What makes shared physical experiences—like my tractor rides with my grandfather—uniquely powerful for transmitting values?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+<textarea 
+    id="physical-space"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
                 
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Intergenerational Dynamics</h4>
                     <p class="mb-2">How does your garden design address potential barriers between generations? How does it create moments of shared experience that might bridge generational divides? What makes these spaces work for both young and old?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+<textarea 
+    id="intergenerational-dynamics"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
                 
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Challenges and Limitations</h4>
                     <p class="mb-2">What challenges might arise in implementing your memory garden? Are there any cultural knowledge elements that might be difficult to preserve through a physical space? How might you address these limitations?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+ <textarea 
+    id="challenges-limitations"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
                 
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Ancient and Modern Preservation</h4>
                     <p class="mb-2">How does your approach to preserving knowledge compare to ancient methods like oral storytelling traditions exemplified by Nestor in the Iliad? What advantages or disadvantages does your method have compared to these ancient techniques?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+<textarea 
+    id="ancient-modern"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
                 
                 <div class="reflection-prompt">
                     <h4 class="font-medium mb-2">Broader Applications</h4>
                     <p class="mb-2">How might the principles you've applied in your memory garden design be used in other contexts? Could similar approaches help preserve other forms of cultural knowledge?</p>
-                    <textarea 
-                        class="w-full border rounded p-3 mt-2" 
-                        rows="3" 
-                        placeholder="Your reflection..."
-                    ></textarea>
+<textarea 
+    id="broader-applications"
+    class="w-full border rounded p-3 mt-2" 
+    rows="3" 
+    placeholder="Your reflection..."
+></textarea>
                 </div>
             </div>
             
@@ -197,7 +203,7 @@
                     </svg>
                     Back: Design Challenge
                 </a>
-                <a href="memory-garden.html" class="btn btn-primary">
+                <a href="end.html" class="btn btn-primary">
                     Complete Lesson
                     <svg class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -206,7 +212,19 @@
             </div>
         </div>
     </main>
-
+    <div class="p-6 bg-green-50 rounded-lg border border-green-200 my-8">
+    <h3 class="text-xl font-semibold mb-4 text-green-800">Your Memory Garden Journey</h3>
+    <p class="mb-4">You've completed this learning experience exploring how memory gardens can preserve cultural knowledge and bridge generations. From ancient wisdom traditions to modern design principles, you've considered how intentional spaces can help maintain important connections across time.</p>
+    <p class="mb-4">Click the button below to download a summary of your reflections, which you can revisit or use as a starting point for creating your own physical or digital memory garden.</p>
+    <div class="flex justify-center">
+        <button id="downloadReflections" class="btn btn-primary flex items-center">
+            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download Your Reflection Summary
+        </button>
+    </div>
+</div>
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -257,21 +275,267 @@
             });
         });
         
-        // Auto-save form inputs to localStorage
-        const formInputs = document.querySelectorAll('textarea');
-        
-        // Load saved form data
-        formInputs.forEach(input => {
-            const savedValue = localStorage.getItem(`reflection_${input.id || input.getAttribute('placeholder')}`);
-            if (savedValue) {
-                input.value = savedValue;
+// Replace the current localStorage script with this one
+// Auto-save form inputs to localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('textarea').forEach(textarea => {
+        // If the textarea doesn't have an ID, generate one
+        if (!textarea.id) {
+            const nearestLabel = textarea.closest('div').querySelector('label');
+            if (nearestLabel) {
+                const labelFor = nearestLabel.getAttribute('for');
+                if (labelFor) {
+                    textarea.id = labelFor;
+                } else {
+                    // Create an ID based on label text
+                    const labelText = nearestLabel.textContent.trim().toLowerCase()
+                        .replace(/[^a-z0-9]/g, '-').substring(0, 30);
+                    textarea.id = 'memory_garden_' + labelText;
+                    nearestLabel.setAttribute('for', textarea.id);
+                }
+            } else {
+                // If no label found, generate a unique ID
+                textarea.id = 'memory_garden_textarea_' + Math.random().toString(36).substring(2, 9);
             }
-            
-            // Save on input
-            input.addEventListener('input', function() {
-                localStorage.setItem(`reflection_${this.id || this.getAttribute('placeholder')}`, this.value);
-            });
+        }
+        
+        // Ensure ID has the prefix
+        if (!textarea.id.startsWith('memory_garden_')) {
+            textarea.id = 'memory_garden_' + textarea.id;
+        }
+        
+        // Set initial value from localStorage if it exists
+        const storageKey = textarea.id;
+        const savedValue = localStorage.getItem(storageKey);
+        if (savedValue) {
+            textarea.value = savedValue;
+        }
+        
+        // Save value when it changes
+        textarea.addEventListener('input', function() {
+            localStorage.setItem(storageKey, this.value);
         });
-    </script>
+    });
+});
+
+// Function to get garden design description
+function getGardenDesignDescription() {
+    const gardenDescription = localStorage.getItem('memory_garden_design_description');
+    return gardenDescription || "No garden design information available.";
+}
+
+// Function to generate and download reflection summary
+document.getElementById('downloadReflections').addEventListener('click', function() {
+    // Create heading and introduction
+    let content = `# Your Memory Garden Journey
+        
+Date: ${new Date().toLocaleDateString()}
+
+## Introduction
+
+This document contains your reflections from the Memory Garden learning experience, which explored how we can preserve cultural knowledge and bridge generations through intentionally designed spaces. Your thoughts captured here can serve as a foundation for creating your own memory garden—whether physical or digital.
+
+## Ancient Wisdom & Modern Connections
+
+`;
+    
+    // Get data from localStorage and add to content
+    
+    // From index.html - Reflection on initial challenge
+    const nestorReflection = localStorage.getItem('memory_garden_nestor-reflection');
+    if (nestorReflection) {
+        content += `### Reflections on Nestor's Role
+
+**How does Nestor's role in the Iliad parallel the role of elders in our communities today? What might be lost if these stories and experiences aren't shared?**
+${nestorReflection}
+
+`;
+    }
+    
+    // From wisdom-from-past.html - Personal spaces of learning
+    const spaceDescription = localStorage.getItem('memory_garden_space-description');
+    const knowledgeTransferred = localStorage.getItem('memory_garden_knowledge-transferred');
+    const spaceElements = localStorage.getItem('memory_garden_space-elements');
+    
+    if (spaceDescription || knowledgeTransferred || spaceElements) {
+        content += `### Personal Spaces of Learning
+
+`;
+        if (spaceDescription) {
+            content += `**Description of the space:**
+${spaceDescription}
+
+`;
+        }
+        
+        if (knowledgeTransferred) {
+            content += `**Knowledge transferred in this space:**
+${knowledgeTransferred}
+
+`;
+        }
+        
+        if (spaceElements) {
+            content += `**Elements that facilitated this transfer:**
+${spaceElements}
+
+`;
+        }
+    }
+    
+    // From design-challenge.html
+    const traditionStory = localStorage.getItem('memory_garden_tradition-story');
+    const scentElements = localStorage.getItem('memory_garden_scent-elements');
+    const tactileElements = localStorage.getItem('memory_garden_tactile-elements');
+    const visualElements = localStorage.getItem('memory_garden_visual-elements');
+    const soundElements = localStorage.getItem('memory_garden_sound-elements');
+    const gardenSignificance = localStorage.getItem('memory_garden_garden-significance');
+    const intergenerationalConnection = localStorage.getItem('memory_garden_intergenerational-connection');
+    
+    if (traditionStory || scentElements || tactileElements || visualElements || soundElements || gardenSignificance || intergenerationalConnection) {
+        content += `## Your Memory Garden Design
+
+`;
+        if (traditionStory) {
+            content += `**Tradition or story you chose to preserve:**
+${traditionStory}
+
+`;
+        }
+        
+        content += `### Sensory Elements
+
+`;
+        
+        if (scentElements) {
+            content += `**Scent Elements:**
+${scentElements}
+
+`;
+        }
+        
+        if (tactileElements) {
+            content += `**Tactile Elements:**
+${tactileElements}
+
+`;
+        }
+        
+        if (visualElements) {
+            content += `**Visual Elements:**
+${visualElements}
+
+`;
+        }
+        
+        if (soundElements) {
+            content += `**Sound Elements:**
+${soundElements}
+
+`;
+        }
+        
+        content += `### Garden Layout and Significance
+
+${getGardenDesignDescription()}
+
+`;
+        
+        if (gardenSignificance) {
+            content += `**Significance of garden elements:**
+${gardenSignificance}
+
+`;
+        }
+        
+        if (intergenerationalConnection) {
+            content += `**How your design facilitates intergenerational connections:**
+${intergenerationalConnection}
+
+`;
+        }
+    }
+    
+    // From reflection.html
+    const culturalSignificance = localStorage.getItem('memory_garden_cultural-significance');
+    const physicalSpace = localStorage.getItem('memory_garden_physical-space');
+    const intergenerationalDynamics = localStorage.getItem('memory_garden_intergenerational-dynamics');
+    const challengesLimitations = localStorage.getItem('memory_garden_challenges-limitations');
+    const ancientModern = localStorage.getItem('memory_garden_ancient-modern');
+    const broaderApplications = localStorage.getItem('memory_garden_broader-applications');
+    
+    if (culturalSignificance || physicalSpace || intergenerationalDynamics || challengesLimitations || ancientModern || broaderApplications) {
+        content += `## Final Reflections
+
+`;
+        if (culturalSignificance) {
+            content += `**Cultural Significance:**
+${culturalSignificance}
+
+`;
+        }
+        
+        if (physicalSpace) {
+            content += `**Power of Physical Space:**
+${physicalSpace}
+
+`;
+        }
+        
+        if (intergenerationalDynamics) {
+            content += `**Intergenerational Dynamics:**
+${intergenerationalDynamics}
+
+`;
+        }
+        
+        if (challengesLimitations) {
+            content += `**Challenges and Limitations:**
+${challengesLimitations}
+
+`;
+        }
+        
+        if (ancientModern) {
+            content += `**Ancient and Modern Preservation:**
+${ancientModern}
+
+`;
+        }
+        
+        if (broaderApplications) {
+            content += `**Broader Applications:**
+${broaderApplications}
+
+`;
+        }
+    }
+    
+    // Add final thoughts section
+    content += `## Next Steps
+
+Consider these actions to bring your memory garden to life:
+
+1. **Select a space** - Choose a physical location or digital platform where your memory garden will live
+2. **Gather sensory elements** - Collect plants, objects, recordings, or digital media that trigger important memories
+3. **Create context** - Add labels, stories, or explanations that help others understand the significance
+4. **Invite participation** - Share your garden with those whose stories it preserves and invite them to contribute
+5. **Plan for growth** - Memory gardens evolve over time, so consider how to incorporate new stories and knowledge
+
+Remember Nestor's metaphor: "Like the generations of leaves, the lives of mortals." While individual lives may be transient, the wisdom we preserve through intentional spaces can transcend generations.
+`;
+    
+    // Create the download
+    const blob = new Blob([content], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Memory_Garden_Reflections.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});
+</script>
 </body>
 </html>

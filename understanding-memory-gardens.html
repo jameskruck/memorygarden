@@ -141,8 +141,17 @@
                 </div>
                 
                 <p class="text-gray-700">Memory gardens integrate these sensory elements intentionally, creating an environment that naturally facilitates the sharing of cultural knowledge across generations. The sensory richness of these spaces provides multiple entry points for memories and stories, much like how the ancient poets used vivid imagery and rhythm to make their tales memorable.</p>
+                <p class="text-gray-700 mt-4">These sensory connections often transcend the merely physical, creating spiritual links between generations. When we experience these triggers in a memory garden, we're not just remembering facts but reconnecting with the wisdom, values, and spiritual essence that our ancestors or mentors wished to pass down to us. Like Nestor's stories around the campfire, these experiences help us recognize our place in the continuing flow of human knowledge and tradition.</p>
+
             </div>
         </div>
+
+        <!-- Add this before the "Key Elements of Effective Memory Gardens" section -->
+<div class="info-box info-box-blue mb-6">
+    <h3 class="font-medium mb-2">Reflection on Sensory Triggers</h3>
+    <p class="mb-3">Think about what sensory elements would be most effective in preserving important knowledge from your own cultural or family background. Which sensory experiences would best trigger memories and stories that matter to you?</p>
+    <textarea id="sensory-triggers" class="w-full border rounded p-3 mt-2" rows="3" placeholder="Your thoughts on meaningful sensory elements..."></textarea>
+</div>
         
         <!-- Key Elements -->
         <div class="content-section">
@@ -356,5 +365,48 @@
             });
         });
     </script>
+    <script>
+    // Save textarea inputs to localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('textarea').forEach(textarea => {
+            // If the textarea doesn't have an ID, generate one
+            if (!textarea.id) {
+                const nearestLabel = textarea.closest('div').querySelector('label');
+                if (nearestLabel) {
+                    const labelFor = nearestLabel.getAttribute('for');
+                    if (labelFor) {
+                        textarea.id = labelFor;
+                    } else {
+                        // Create an ID based on label text
+                        const labelText = nearestLabel.textContent.trim().toLowerCase()
+                            .replace(/[^a-z0-9]/g, '-').substring(0, 30);
+                        textarea.id = 'memory_garden_' + labelText;
+                        nearestLabel.setAttribute('for', textarea.id);
+                    }
+                } else {
+                    // If no label found, generate a unique ID
+                    textarea.id = 'memory_garden_textarea_' + Math.random().toString(36).substring(2, 9);
+                }
+            }
+            
+            // Ensure ID has the prefix
+            if (!textarea.id.startsWith('memory_garden_')) {
+                textarea.id = 'memory_garden_' + textarea.id;
+            }
+            
+            // Set initial value from localStorage if it exists
+            const storageKey = textarea.id;
+            const savedValue = localStorage.getItem(storageKey);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+            
+            // Save value when it changes
+            textarea.addEventListener('input', function() {
+                localStorage.setItem(storageKey, this.value);
+            });
+        });
+    });
+</script>
 </body>
 </html>

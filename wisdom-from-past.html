@@ -120,7 +120,7 @@
             <div class="info-box info-box-blue mb-6">
                 <h3 class="font-medium mb-2">Reflection Question</h3>
                 <p>How does Nestor's role in the Iliad parallel the role of elders in our communities today? What might be lost if these stories and experiences aren't shared?</p>
-                <textarea class="w-full border rounded p-3 mt-2" rows="3" placeholder="Your thoughts..."></textarea>
+<textarea id="nestor-reflection" class="w-full border rounded p-3 mt-2" rows="3" placeholder="Your thoughts..."></textarea>
             </div>
         </div>
 
@@ -129,15 +129,15 @@
             <h2 class="text-2xl font-bold mb-4">Personal Reflections: Lessons Beyond Words</h2>
             
             <div class="mb-6">
-                <h3 class="text-xl font-semibold mb-3">A Story About My Grandfather</h3>
+                <h3 class="text-xl font-semibold mb-3">A Story About My Grandpa</h3>
                 <div class="info-box info-box-green">
-                    <p class="mb-3">I grew up on a working farm, with my grandfather owning the land all around us. He would take me on tractor rides, and I'd often fall asleep while he did the tractor work and combining, then he'd carry me home. We had a special relationship.</p>
+                    <p class="mb-3">I grew up on a working farm, with my grandpa owning the land all around us. He would take me on tractor rides while he worked (I don't think he thought of them as "tractor rides"), and I'd often fall asleep while I sat on the armrest of the tractor seat, my head leaning against the window. Eventually, he'd be done and have to carry me home through the fields.</p>
                     
-                    <p class="mb-3">My grandfather would take me into town to the donut shop, and he was always very frugal. He would let me get either a donut or a drink – never ever both. This frugality was consistent throughout my entire childhood.</p>
+                    <p class="mb-3">On these occassions, my grandpa would take me into town to the coffee shop. He'd visit with his friends and let me get either a drink or a donut - never both (what a choice! who isn't thirsty after a donut?). </p>
                     
-                    <p class="mb-3">Years later, when I was in my twenties and completely broke, I needed money desperately. My grandfather wrote me a check for $10,000 without hesitation. When I offered to work out a repayment plan, he simply said, "No need."</p>
+                    <p class="mb-3">Years later, when I was in my twenties and starting my own family and in need of support, my grandpa helped me out without hesitation. When I offered to work out a repayment plan, he simply said, "There's no need to worry about that."</p>
                     
-                    <p>This lesson in balanced frugality and generous giving wasn't taught through explicit lectures but through lived experience. The donut shop wasn't just a place to eat – it was a space where values were transmitted across generations. This is a lesson I still pass on to my own children today.</p>
+                    <p>There was no explicit lesson included in these experiences. He modelled a type of behaviour that he believed in without ever needing to say why. Nevertheless, I tell my children this story regularly in a way to remind that its important to save for whats important and that I will always be there to help them when they need it. </p>
                 </div>
                 
                 <div class="mt-6">
@@ -238,5 +238,48 @@
             });
         });
     </script>
+<script>
+    // Save textarea inputs to localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('textarea').forEach(textarea => {
+            // If the textarea doesn't have an ID, generate one
+            if (!textarea.id) {
+                const nearestLabel = textarea.closest('div').querySelector('label');
+                if (nearestLabel) {
+                    const labelFor = nearestLabel.getAttribute('for');
+                    if (labelFor) {
+                        textarea.id = labelFor;
+                    } else {
+                        // Create an ID based on label text
+                        const labelText = nearestLabel.textContent.trim().toLowerCase()
+                            .replace(/[^a-z0-9]/g, '-').substring(0, 30);
+                        textarea.id = 'memory_garden_' + labelText;
+                        nearestLabel.setAttribute('for', textarea.id);
+                    }
+                } else {
+                    // If no label found, generate a unique ID
+                    textarea.id = 'memory_garden_textarea_' + Math.random().toString(36).substring(2, 9);
+                }
+            }
+            
+            // Ensure ID has the prefix
+            if (!textarea.id.startsWith('memory_garden_')) {
+                textarea.id = 'memory_garden_' + textarea.id;
+            }
+            
+            // Set initial value from localStorage if it exists
+            const storageKey = textarea.id;
+            const savedValue = localStorage.getItem(storageKey);
+            if (savedValue) {
+                textarea.value = savedValue;
+            }
+            
+            // Save value when it changes
+            textarea.addEventListener('input', function() {
+                localStorage.setItem(storageKey, this.value);
+            });
+        });
+    });
+</script>
 </body>
 </html>
